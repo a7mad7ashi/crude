@@ -4,6 +4,7 @@ const morgan = require ("morgan");
 const bodyParser = require ('body-parser')
 const app = express();
 const path = require ('path');
+const router = require('./server/routes/router')
 
 
 
@@ -12,7 +13,7 @@ const PORT = process.env.PORT || 8080
 
 //log request
 app.use(morgan('tiny'))
-
+app.use(router)
 
 // parse request to body parser
 
@@ -31,15 +32,7 @@ app.use('/js', express.static(path.resolve(__dirname,'assets/js')))
 
 
 
-app.get('/',(req,res)=>{
-    res.render("index")
-})
-app.get('/add-user',(req,res)=>{
-    res.render("add_user")
-})
-app.get('/updateUser',(req,res)=>{
-    res.render("update_user")
-})
+
 
 app.listen(PORT ,()=>{
     console.log(`server is running on http:..localhost:${PORT}`)
