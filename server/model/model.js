@@ -11,7 +11,7 @@ const schema = new mongoose.Schema({
         unique:true,
     },
     gender:String,
-    Status:String,
+    status:String,
 })
 const userdb = mongoose.model('userdb', schema)
 module.exports = userdb 
